@@ -1,0 +1,65 @@
+/*
+#595959;
+#7f7f7f;
+#a5a5a5;
+#cccccc;
+#f2f2f2
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+
+
+:root {
+   --background: #f2f2f2;
+   --text: #595959;
+}
+
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   flex-direction: column;
+   display: flex;
+   align-items: center;
+   color: var(--text);
+   font-family: 'Signika', sans-serif;
+}
+
+.container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex: 1;
+}
+
+h1 {
+   font-family: 'Lobster', cursive !important;
+}
+
+.draw-box {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.draw-grid {
+   display: grid;
+   grid-template-columns: repeat(16, 1fr);
+}
+
+.square {
+   height: 30px;
+   width: 30px;
+   background-color: #fff;
+   border: 1px #ccc dashed;
+}
+
+footer {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   padding: 10px 0;
+   align-items: center;
+   background-color: #ccc;
+}
