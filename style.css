@@ -7,8 +7,7 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Sintony:wght@400&display=swap');
 
 :root {
    --background: #f2f2f2;
@@ -23,7 +22,8 @@ body {
    display: flex;
    align-items: center;
    color: var(--text);
-   font-family: 'Signika', sans-serif;
+   font-family: 'Sintony', sans-serif;
+   font-size: 16px;
 }
 
 .container {
@@ -51,8 +51,29 @@ h1 {
 .square {
    height: 30px;
    width: 30px;
-   background-color: #fff;
-   border: 1px #ccc dashed;
+   border: 1px #f2f2f2 solid;
+}
+
+.square:hover {
+   border: 1px #a5a5a5 solid;
+   background-color: #a5a5a5;
+}
+
+#clear-grid {
+   margin: 20px;
+   padding: 10px 20px;
+   font-family: 'Sintony', sans-serif;
+   font-size: 20px;
+   border: 1px #ccc solid;
+   background-color: transparent;
+   color: var(--text)
+}
+
+#clear-grid:hover {
+   background-color: #ccc;
+   color: #f2f2f2;
+   cursor: pointer;
+
 }
 
 footer {
@@ -62,4 +83,9 @@ footer {
    padding: 10px 0;
    align-items: center;
    background-color: #ccc;
+}
+
+a {
+   color: var(--text);
+   text-decoration: none;
 }
