@@ -36,11 +36,11 @@ const colourSquare = (id) => {
 
 // Displays value of range slider in DOM
 function getValue(value) {
-   document.getElementById('range-value').innerHTML = `${value} x ${value}`;
+   gridValue.innerHTML = `${value} x ${value}`;
 }
 
 // EVENT LISTENERS
-// When square is clicked, it is filled in
+// When square is clicked, square is coloured
 drawGrid.addEventListener('mousedown', (e) => {
    e.preventDefault();
 
@@ -51,13 +51,15 @@ drawGrid.addEventListener('mousedown', (e) => {
    }
 });
 
+// While mousedown, mousemove continues colouring square
 drawGrid.addEventListener('mousemove', (e) => {
    if (isDrawing) {
       colourSquare(e.target.id);
    }
 });
 
-drawGrid.addEventListener('mouseup', (e) => {
+// Square stops being filled on mouseup
+drawGrid.addEventListener('mouseup', () => {
    isDrawing = false;
 });
 
@@ -82,6 +84,5 @@ gridRange.addEventListener('change', (e) => {
 // Init, default grid size
 window.onload = () => {
    getValue(defaultGridSize);
-   gridRange.value = defaultGridSize;
-   createGrid(gridRange.value);
+   createGrid(defaultGridSize);
 };
