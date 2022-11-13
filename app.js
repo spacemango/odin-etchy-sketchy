@@ -6,11 +6,14 @@ const drawGrid = document.querySelector('.draw-grid');
 const clearBtn = document.querySelector('#clear-grid');
 const applyBtn = document.querySelector('#apply-btn');
 const root = document.querySelector(':root');
-const input = document.querySelector('#grid-range').value;
+const gridRange = document.querySelector('#grid-range');
+const gridValue = document.querySelector("#range-value");
 
-// const input = 2;
+// Default grid size
+const defaultGridSize = 16;
+let isDrawing = false;
 
-// Create grid
+// Generates grid from value of grid range
 const createGrid = (num) => {
 
    const totalSquares = num * num;
@@ -24,20 +27,41 @@ const createGrid = (num) => {
    }
 };
 
-// EVENT LISTENERS
-// When square is clicked, it is filled in
-drawGrid.addEventListener('click', (e) => {
-   e.preventDefault();
-
-   const squareId = e.target.id;
-   const squareDiv = document.getElementById(squareId);
+// Colours a square
+const colourSquare = (id) => {
+   const squareDiv = document.getElementById(id);
    squareDiv.style.backgroundColor = '#595959';
    squareDiv.style.border = '1px #595959 solid';
+};
 
-   clearBtn.hidden = false;
+// Displays value of range slider in DOM
+function getValue(value) {
+   document.getElementById('range-value').innerHTML = `${value} x ${value}`;
+}
+
+// EVENT LISTENERS
+// When square is clicked, it is filled in
+drawGrid.addEventListener('mousedown', (e) => {
+   e.preventDefault();
+
+   if (e.target.id) {
+      colourSquare(e.target.id);
+      isDrawing = true;
+      clearBtn.hidden = false;
+   }
 });
 
-// Clear grid when clicked
+drawGrid.addEventListener('mousemove', (e) => {
+   if (isDrawing) {
+      colourSquare(e.target.id);
+   }
+});
+
+drawGrid.addEventListener('mouseup', (e) => {
+   isDrawing = false;
+});
+
+// Clear grid colour when clicked
 clearBtn.addEventListener('click', () => {
    const square = document.querySelectorAll('.square');
 
@@ -49,9 +73,15 @@ clearBtn.addEventListener('click', () => {
    clearBtn.hidden = true;
 });
 
-function getValue(value) {
-   // const gridRange = document.getElementById('grid-range').value;
-   document.getElementById('rangeValue').innerHTML = `${value} x ${value}`;
-}
+// Takes range value and sets grid size
+gridRange.addEventListener('change', (e) => {
+   drawGrid.innerHTML = '';
+   createGrid(e.target.value);
+});
 
-createGrid(input);
+// Init, default grid size
+window.onload = () => {
+   getValue(defaultGridSize);
+   gridRange.value = defaultGridSize;
+   createGrid(gridRange.value);
+};
