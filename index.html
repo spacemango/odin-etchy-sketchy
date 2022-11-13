@@ -6,8 +6,9 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="style.css">
-   <title>Etch a Sketch</title>
+   <title>Etchy Sketchy</title>
    <script src="app.js" defer></script>
+
 </head>
 
 <body>
@@ -15,12 +16,22 @@
    <div class="container">
       <div class="draw-box">
          <h1>Etch a Sketch</h1>
+         <div class="options">
+            <label for="grid-range">Select grid size:</label>
+            <div class="grid-slider">
+               <p id="rangeValue">16 x 16</p>
+               <input type="range" id="grid-range" name="grid-range" min="2" max="100" value="16"
+                  oninput=getValue(this.value)>
+
+            </div>
+            <button id="apply-btn">Apply</button>
+         </div>
          <div class="draw-grid"></div>
+
          <button id="clear-grid" hidden>Clear</button>
       </div>
    </div>
    <footer><a href="https://github.com/spacemango/odin-etchy-sketchy">spacemango @ github</footer>
-
 </body>
 
 </html>
