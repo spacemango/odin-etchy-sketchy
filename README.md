@@ -1,2 +1,3 @@
-# odin-etchy-sketchy
- An etch a sketch app for the Odin Project
+# Etchy Sketchy
+
+An etch a sketch app for the Odin Project
